@@ -1,5 +1,6 @@
 "use client";
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 
 export default function LoginPage() {
   return (
@@ -52,6 +53,15 @@ export default function LoginPage() {
         <p className="mt-6 text-xs text-gray-600">
           We request read-only access to your Google Sheets. Your credentials are never stored in plaintext.
         </p>
+
+        {/* Footer */}
+        <footer className="mt-12 text-xs text-gray-600 flex items-center justify-center gap-4 border-t border-gray-850/20 pt-6">
+          <span>© {new Date().getFullYear()} SheetSync</span>
+          <span className="text-gray-800">•</span>
+          <Link href="/privacy" className="hover:text-indigo-400 underline decoration-indigo-500/30 underline-offset-4 transition-colors">
+            Privacy Policy
+          </Link>
+        </footer>
       </div>
     </main>
   );

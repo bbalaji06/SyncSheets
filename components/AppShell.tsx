@@ -66,8 +66,18 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       </aside>
 
       {/* Main */}
-      <main className="flex-1 overflow-y-auto bg-gray-950">
-        {children}
+      <main className="flex-1 overflow-y-auto bg-gray-950 flex flex-col">
+        <div className="flex-1">
+          {children}
+        </div>
+        <footer className="py-6 px-8 border-t border-gray-900 text-xs text-gray-500 flex items-center justify-between bg-gray-950">
+          <div>© {new Date().getFullYear()} SheetSync</div>
+          <div>
+            <Link href="/privacy" className="hover:text-indigo-400 transition-colors">
+              Privacy Policy
+            </Link>
+          </div>
+        </footer>
       </main>
     </div>
   );
