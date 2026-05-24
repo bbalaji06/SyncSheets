@@ -4,7 +4,8 @@ import { runSync } from "@/lib/syncOrchestrator";
 
 export async function POST(req: NextRequest) {
   const session = await auth();
-  if (!session?.accessToken) {
+  const accessToken = session?.accessToken;
+  if (!accessToken) {
     return new Response("Unauthorized", { status: 401 });
   }
 
@@ -28,7 +29,7 @@ export async function POST(req: NextRequest) {
       try {
         console.log("Starting runSync generator...");
         for await (const log of runSync({
-          accessToken: session.accessToken,
+          accessToken,
           spreadsheetId,
           sheetName,
           tableName,
